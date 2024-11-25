@@ -2,6 +2,7 @@ from flask import jsonify
 import mysql.connector
 from mysql.connector import Error
 import os
+from memory_profiler import profile
 
 # Database configuration from environment variables
 DB_CONFIG = {
@@ -18,6 +19,7 @@ def get_db_connection():
     except Error as e:
         return jsonify({"error": f"Database connection failed: {str(e)}"}), 500
 
+@profile
 def add_inventory_item(data):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -36,6 +38,7 @@ def add_inventory_item(data):
         cursor.close()
         connection.close()
 
+@profile
 def get_all_items():
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
@@ -49,6 +52,7 @@ def get_all_items():
         cursor.close()
         connection.close()
 
+@profile
 def get_item_by_id(item_id):
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
@@ -64,6 +68,7 @@ def get_item_by_id(item_id):
         cursor.close()
         connection.close()
 
+@profile
 def update_item_details(item_id, data):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -80,6 +85,7 @@ def update_item_details(item_id, data):
         cursor.close()
         connection.close()
 
+@profile
 def deduct_item_stock(item_id, quantity):
     connection = get_db_connection()
     cursor = connection.cursor()
