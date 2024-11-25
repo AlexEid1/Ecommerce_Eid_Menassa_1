@@ -2,6 +2,7 @@ from flask import jsonify
 import mysql.connector
 from mysql.connector import Error
 import os
+from memory_profiler import profile
 
 # Database configuration from environment variables
 DB_CONFIG = {
@@ -18,6 +19,7 @@ def get_db_connection():
     except Error as e:
         return jsonify({"error": f"Database connection failed: {str(e)}"}), 500
 
+@profile
 def submit_review(data):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -35,6 +37,7 @@ def submit_review(data):
         cursor.close()
         connection.close()
 
+@profile
 def update_review(review_id, data):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -51,6 +54,7 @@ def update_review(review_id, data):
         cursor.close()
         connection.close()
 
+@profile
 def delete_review(review_id):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -64,6 +68,7 @@ def delete_review(review_id):
         cursor.close()
         connection.close()
 
+@profile
 def get_product_reviews(product_id):
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
@@ -77,6 +82,7 @@ def get_product_reviews(product_id):
         cursor.close()
         connection.close()
 
+@profile
 def get_customer_reviews(customer_id):
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
@@ -90,6 +96,7 @@ def get_customer_reviews(customer_id):
         cursor.close()
         connection.close()
 
+@profile
 def moderate_review(review_id, action):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -106,6 +113,7 @@ def moderate_review(review_id, action):
         cursor.close()
         connection.close()
 
+@profile
 def get_review_details(review_id):
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
