@@ -4,8 +4,15 @@ from services import (
     get_all_customers, get_customer_by_username, 
     charge_wallet, deduct_wallet
 )
+import os
 
 app = Flask(__name__)
+
+# Database configuration from environment variables
+app.config['DB_HOST'] = os.getenv('DB_HOST', 'localhost')
+app.config['DB_USER'] = os.getenv('DB_USER', 'root')
+app.config['DB_PASSWORD'] = os.getenv('DB_PASSWORD', 'rootpassword')
+app.config['DB_NAME'] = os.getenv('DB_NAME', 'ecommerce')
 
 @app.route('/customers', methods=['POST'])
 def create_customer():

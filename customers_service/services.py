@@ -1,13 +1,14 @@
 from flask import jsonify
 import mysql.connector
 from mysql.connector import Error
+import os
 
-# Database configuration
+# Database configuration from environment variables
 DB_CONFIG = {
-    'host': 'db',
-    'user': 'root',
-    'password': 'rootpassword',
-    'database': 'ecommerce'
+    'host': os.getenv('DB_HOST', 'localhost'),
+    'user': os.getenv('DB_USER', 'root'),
+    'password': os.getenv('DB_PASSWORD', 'rootpassword'),
+    'database': os.getenv('DB_NAME', 'ecommerce')
 }
 
 def get_db_connection():
