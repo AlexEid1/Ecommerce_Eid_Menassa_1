@@ -50,3 +50,16 @@ services:
       - DB_NAME=ecommerce
     depends_on:
       - db
+
+  reviews_service:
+    build:
+      context: ./reviews_service
+    ports:
+      - "5004:5004"
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=rootpassword
+      - DB_NAME=ecommerce
+    depends_on:
+      - db
