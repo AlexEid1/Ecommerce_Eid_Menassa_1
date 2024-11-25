@@ -40,14 +40,15 @@ def delete_customer(customer_id):
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
-        cursor.execute("DELETE FROM customers WHERE id = %s", (customer_id,))
+        cursor.execute("UPDATE customers SET status = 'deleted' WHERE id = %s", (customer_id,))
         connection.commit()
-        return jsonify({"message": "Customer deleted successfully!"}), 200
+        return jsonify({"message": "Customer marked as deleted!"}), 200
     except Error as e:
         return jsonify({"error": str(e)}), 400
     finally:
         cursor.close()
         connection.close()
+
 
 def update_customer_info(customer_id, data):
     connection = get_db_connection()
@@ -69,7 +70,7 @@ def get_all_customers():
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
     try:
-        cursor.execute("SELECT * FROM customers")
+        cursor.execute("SELECT * FROM customers WHERE status = 'active'")
         customers = cursor.fetchall()
         return jsonify(customers), 200
     except Error as e:

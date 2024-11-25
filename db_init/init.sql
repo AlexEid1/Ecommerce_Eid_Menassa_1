@@ -12,9 +12,10 @@ CREATE TABLE IF NOT EXISTS customers (
     password VARCHAR(255) NOT NULL,
     age INT,
     address TEXT,
-    gender ENUM('male', 'female'),
-    marital_status ENUM('single', 'married'),
-    wallet_balance DECIMAL(10, 2) DEFAULT 0
+    gender ENUM('male', 'female', 'other'),
+    marital_status ENUM('single', 'married', 'other'),
+    wallet_balance DECIMAL(10, 2) DEFAULT 0,
+    status ENUM('active', 'deleted') DEFAULT 'active' -- Soft delete status
 );
 
 -- Inventory Table
@@ -47,6 +48,7 @@ CREATE TABLE IF NOT EXISTS reviews (
     rating INT CHECK (rating BETWEEN 1 AND 5),
     comment TEXT,
     review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('approved', 'flagged') DEFAULT 'approved',
     FOREIGN KEY (customer_id) REFERENCES customers(id),
     FOREIGN KEY (inventory_id) REFERENCES inventory(id)
 );
