@@ -2,6 +2,7 @@ from flask import jsonify
 import mysql.connector
 from mysql.connector import Error
 import os
+from memory_profiler import profile
 
 # Database configuration from environment variables
 DB_CONFIG = {
@@ -18,6 +19,7 @@ def get_db_connection():
     except Error as e:
         return jsonify({"error": f"Database connection failed: {str(e)}"}), 500
 
+@profile
 def register_customer(data):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -36,6 +38,7 @@ def register_customer(data):
         cursor.close()
         connection.close()
 
+@profile
 def delete_customer(customer_id):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -49,7 +52,7 @@ def delete_customer(customer_id):
         cursor.close()
         connection.close()
 
-
+@profile
 def update_customer_info(customer_id, data):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -66,6 +69,7 @@ def update_customer_info(customer_id, data):
         cursor.close()
         connection.close()
 
+@profile
 def get_all_customers():
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
@@ -79,6 +83,7 @@ def get_all_customers():
         cursor.close()
         connection.close()
 
+@profile
 def get_customer_by_username(username):
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
@@ -94,6 +99,7 @@ def get_customer_by_username(username):
         cursor.close()
         connection.close()
 
+@profile
 def charge_wallet(customer_id, amount):
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -107,6 +113,7 @@ def charge_wallet(customer_id, amount):
         cursor.close()
         connection.close()
 
+@profile
 def deduct_wallet(customer_id, amount):
     connection = get_db_connection()
     cursor = connection.cursor()

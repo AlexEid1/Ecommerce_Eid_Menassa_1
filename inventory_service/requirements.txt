@@ -2,3 +2,5 @@ flask
 mysql-connector-python
 pytest
 pytest-mock
+memory_profiler
+coverage
