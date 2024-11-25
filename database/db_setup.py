@@ -19,8 +19,8 @@ TABLES = {
             password VARCHAR(255) NOT NULL,
             age INT,
             address VARCHAR(255),
-            gender ENUM('Male', 'Female', 'Other'),
-            marital_status ENUM('Single', 'Married', 'Divorced', 'Widowed'),
+            gender ENUM('Male', 'Female'),
+            marital_status ENUM('Single', 'Married'),
             wallet_balance DECIMAL(10, 2) DEFAULT 0.00
         )
     """,
