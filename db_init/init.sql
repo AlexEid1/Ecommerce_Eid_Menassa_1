@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS customers (
     password VARCHAR(255) NOT NULL,
     age INT,
     address TEXT,
-    gender ENUM('male', 'female', 'other'),
-    marital_status ENUM('single', 'married', 'other'),
+    gender ENUM('male', 'female'),
+    marital_status ENUM('single', 'married'),
     wallet_balance DECIMAL(10, 2) DEFAULT 0,
     status ENUM('active', 'deleted') DEFAULT 'active' -- Soft delete status
 );
