@@ -1,7 +1,16 @@
 from app import app
 
 def run_memory_profile():
-    """Run all endpoints in the Reviews Service to trigger memory profiling."""
+    """
+    Run all endpoints in the Reviews Service to trigger memory profiling.
+    
+    This function simulates HTTP requests to the various endpoints of the Reviews Service 
+    (submit a review, fetch reviews for a product or by a customer, and moderate a review) 
+    using Flask's test client. The profiling data for each request is generated through 
+    the memory profiling decorators applied to the functions in the app.
+    
+    It prints the JSON response for each HTTP request to validate the functionality.
+    """
     with app.test_client() as client:
         # 1. Submit a new review
         response = client.post('/reviews', json={

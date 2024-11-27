@@ -13,6 +13,18 @@ DB_CONFIG = {
 }
 
 def get_db_connection():
+    """
+    Establishes and returns a connection to the MySQL database.
+
+    This function retrieves the database connection using the configuration stored in
+    environment variables. It handles exceptions and returns an error message if the 
+    connection fails.
+    
+    Returns:
+        connection (mysql.connector.connection.MySQLConnection): The database connection.
+        or
+        jsonify (dict): Error message in case of failure.
+    """
     try:
         connection = mysql.connector.connect(**DB_CONFIG)
         return connection
@@ -21,6 +33,18 @@ def get_db_connection():
 
 @profile
 def submit_review(data):
+    """
+    Submits a new review to the database.
+
+    This function takes in review data and inserts it into the 'reviews' table in the database.
+    The review includes customer ID, product (inventory) ID, rating, and comment.
+
+    Args:
+        data (dict): Review data containing customer_id, inventory_id, rating, and comment.
+
+    Returns:
+        jsonify (dict): Success message or error message in case of failure.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
@@ -39,6 +63,19 @@ def submit_review(data):
 
 @profile
 def update_review(review_id, data):
+    """
+    Updates an existing review in the database.
+
+    This function updates the review details based on the provided review ID. The fields 
+    in the review (like rating, comment) are updated according to the provided data.
+
+    Args:
+        review_id (int): The ID of the review to be updated.
+        data (dict): The new review data to update.
+
+    Returns:
+        jsonify (dict): Success message or error message in case of failure.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
@@ -56,6 +93,17 @@ def update_review(review_id, data):
 
 @profile
 def delete_review(review_id):
+    """
+    Deletes a review from the database.
+
+    This function deletes a review from the 'reviews' table based on the provided review ID.
+
+    Args:
+        review_id (int): The ID of the review to be deleted.
+
+    Returns:
+        jsonify (dict): Success message or error message in case of failure.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
@@ -70,6 +118,18 @@ def delete_review(review_id):
 
 @profile
 def get_product_reviews(product_id):
+    """
+    Retrieves all reviews for a specific product.
+
+    This function fetches all reviews related to a product from the 'reviews' table based
+    on the provided product (inventory) ID.
+
+    Args:
+        product_id (int): The ID of the product for which to retrieve reviews.
+
+    Returns:
+        jsonify (list): A list of reviews for the specified product or an error message.
+    """
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
     try:
@@ -84,6 +144,18 @@ def get_product_reviews(product_id):
 
 @profile
 def get_customer_reviews(customer_id):
+    """
+    Retrieves all reviews written by a specific customer.
+
+    This function fetches all reviews written by a customer from the 'reviews' table based
+    on the provided customer ID.
+
+    Args:
+        customer_id (int): The ID of the customer for which to retrieve reviews.
+
+    Returns:
+        jsonify (list): A list of reviews written by the specified customer or an error message.
+    """
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
     try:
@@ -98,6 +170,19 @@ def get_customer_reviews(customer_id):
 
 @profile
 def moderate_review(review_id, action):
+    """
+    Moderates a review based on a given action (approve or flag).
+
+    This function updates the status of a review based on the moderation action: either
+    approve or flag the review.
+
+    Args:
+        review_id (int): The ID of the review to be moderated.
+        action (str): The action to take, either "approve" or "flag".
+
+    Returns:
+        jsonify (dict): Success message or error message in case of failure.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
@@ -115,6 +200,17 @@ def moderate_review(review_id, action):
 
 @profile
 def get_review_details(review_id):
+    """
+    Retrieves the details of a specific review.
+
+    This function fetches detailed information about a specific review based on its review ID.
+
+    Args:
+        review_id (int): The ID of the review to retrieve.
+
+    Returns:
+        jsonify (dict): The review details or an error message if not found.
+    """
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
     try:

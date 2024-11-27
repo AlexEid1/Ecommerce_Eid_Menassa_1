@@ -3,7 +3,25 @@ import pstats
 from app import app
 
 def profile_endpoint(client, method, path, json=None):
-    """Profiles a specific endpoint."""
+    """
+    Profiles a specific endpoint by sending an HTTP request.
+
+    This function handles different HTTP methods (POST, GET, PUT, DELETE)
+    to interact with a specified endpoint. The response is printed, and the 
+    request execution is recorded for profiling.
+
+    Args:
+        client (FlaskClient): The Flask test client used to send requests.
+        method (str): The HTTP method (POST, GET, PUT, DELETE) for the request.
+        path (str): The endpoint path to send the request to.
+        json (dict, optional): The JSON data to send in the request body (for POST and PUT methods).
+    
+    Returns:
+        Response: The response object returned by the Flask test client.
+    
+    Raises:
+        ValueError: If an unsupported HTTP method is provided.
+    """
     if method == "POST":
         response = client.post(path, json=json)
     elif method == "GET":

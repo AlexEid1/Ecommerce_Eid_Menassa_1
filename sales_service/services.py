@@ -13,6 +13,14 @@ DB_CONFIG = {
 }
 
 def get_db_connection():
+    """
+    Establishes a connection to the database using the configuration 
+    specified in the DB_CONFIG dictionary.
+
+    Returns:
+        connection: A MySQL connection object if successful.
+        response (tuple): A JSON response with an error message and a 500 status code if the connection fails.
+    """
     try:
         connection = mysql.connector.connect(**DB_CONFIG)
         return connection
@@ -21,6 +29,15 @@ def get_db_connection():
 
 @profile
 def display_available_goods():
+    """
+    Retrieves a list of goods that are currently available for sale, 
+    i.e., goods with stock_count greater than zero. This is done by querying 
+    the 'inventory' table in the database.
+
+    Returns:
+        response (tuple): A JSON response containing a list of available goods and a 200 status code.
+        response (tuple): A JSON response with an error message and a 400 status code if the query fails.
+    """
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
     try:
@@ -35,6 +52,17 @@ def display_available_goods():
 
 @profile
 def get_good_details(good_id):
+    """
+    Retrieves the details of a specific good from the 'inventory' table based on the given good ID.
+
+    Args:
+        good_id (int): The ID of the good whose details need to be fetched.
+
+    Returns:
+        response (tuple): A JSON response containing the details of the good and a 200 status code if found.
+        response (tuple): A JSON response with an error message and a 404 status code if the good is not found.
+        response (tuple): A JSON response with an error message and a 400 status code if the query fails.
+    """
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
     try:
@@ -51,6 +79,18 @@ def get_good_details(good_id):
 
 @profile
 def process_sale(data):
+    """
+    Processes a sale by verifying customer wallet balance, checking good availability, 
+    updating the inventory, and recording the sale in the 'sales' table.
+
+    Args:
+        data (dict): A dictionary containing the sale information, including customer_id, 
+                     good_id, and quantity.
+
+    Returns:
+        response (tuple): A JSON response with a success message and a 200 status code if the sale is processed successfully.
+        response (tuple): A JSON response with an error message and a 400 or 404 status code if the sale fails.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:

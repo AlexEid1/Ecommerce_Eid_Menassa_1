@@ -13,14 +13,39 @@ DB_CONFIG = {
 }
 
 def get_db_connection():
+    """
+    Establishes a connection to the MySQL database using the provided configuration.
+
+    Returns:
+        mysql.connector.connection.MySQLConnection: Database connection object.
+
+    Raises:
+        RuntimeError: If the database connection fails.
+    """
     try:
         connection = mysql.connector.connect(**DB_CONFIG)
         return connection
     except Error as e:
-        return jsonify({"error": f"Database connection failed: {str(e)}"}), 500
+        raise RuntimeError(f"Database connection failed: {str(e)}")
 
 @profile
 def register_customer(data):
+    """
+    Registers a new customer in the database.
+
+    Args:
+        data (dict): A dictionary containing customer details, including:
+            - full_name (str): Full name of the customer.
+            - username (str): Username of the customer.
+            - password (str): Password for the customer.
+            - age (int): Age of the customer.
+            - address (str): Address of the customer.
+            - gender (str): Gender of the customer.
+            - marital_status (str): Marital status of the customer.
+
+    Returns:
+        Response: A JSON response indicating success or failure with a status code.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
@@ -40,6 +65,15 @@ def register_customer(data):
 
 @profile
 def delete_customer(customer_id):
+    """
+    Marks a customer as deleted in the database.
+
+    Args:
+        customer_id (int): The ID of the customer to delete.
+
+    Returns:
+        Response: A JSON response indicating success or failure with a status code.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
@@ -54,6 +88,16 @@ def delete_customer(customer_id):
 
 @profile
 def update_customer_info(customer_id, data):
+    """
+    Updates the information of an existing customer.
+
+    Args:
+        customer_id (int): The ID of the customer to update.
+        data (dict): A dictionary containing updated customer details.
+
+    Returns:
+        Response: A JSON response indicating success or failure with a status code.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
@@ -71,6 +115,12 @@ def update_customer_info(customer_id, data):
 
 @profile
 def get_all_customers():
+    """
+    Retrieves a list of all active customers from the database.
+
+    Returns:
+        Response: A JSON response containing a list of active customers or an error message.
+    """
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
     try:
@@ -85,6 +135,15 @@ def get_all_customers():
 
 @profile
 def get_customer_by_username(username):
+    """
+    Retrieves customer details based on the provided username.
+
+    Args:
+        username (str): The username of the customer to retrieve.
+
+    Returns:
+        Response: A JSON response containing customer details or an error message.
+    """
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
     try:
@@ -101,6 +160,16 @@ def get_customer_by_username(username):
 
 @profile
 def charge_wallet(customer_id, amount):
+    """
+    Adds funds to a customer's wallet.
+
+    Args:
+        customer_id (int): The ID of the customer.
+        amount (float): The amount to add to the wallet.
+
+    Returns:
+        Response: A JSON response indicating success or failure with a status code.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
@@ -115,6 +184,16 @@ def charge_wallet(customer_id, amount):
 
 @profile
 def deduct_wallet(customer_id, amount):
+    """
+    Deducts funds from a customer's wallet if sufficient balance exists.
+
+    Args:
+        customer_id (int): The ID of the customer.
+        amount (float): The amount to deduct from the wallet.
+
+    Returns:
+        Response: A JSON response indicating success or failure with a status code.
+    """
     connection = get_db_connection()
     cursor = connection.cursor()
     try:

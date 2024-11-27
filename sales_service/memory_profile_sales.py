@@ -1,7 +1,18 @@
 from app import app
 
 def run_memory_profile():
-    """Run all endpoints in the Sales Service to trigger memory profiling."""
+    """
+    Runs a series of HTTP requests to trigger memory profiling for all endpoints 
+    in the Sales Service. It simulates the process of making a sale, displaying 
+    available goods, and fetching the details of a specific good.
+
+    The function uses the Flask test client to send requests to the application's endpoints:
+    - A POST request to process a sale
+    - A GET request to list all available goods
+    - A GET request to retrieve details of a specific good
+
+    Prints the JSON responses from each endpoint to the console.
+    """
     with app.test_client() as client:
         # 1. Process a sale
         response = client.post('/sales', json={
