@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Welcome to Ecommerce_Eid_Menassa_1’s documentation,! &#8212; Ecommerce_Eid_Menassa_1 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-ecommerce-eid-menassa-1-s-documentation">
+<h1>Welcome to Ecommerce_Eid_Menassa_1’s documentation,!<a class="headerlink" href="#welcome-to-ecommerce-eid-menassa-1-s-documentation" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<dl class="py function" id="module-customers_service.services">
+<dt class="sig sig-object py" id="customers_service.services.charge_wallet">
+<span class="sig-prename descclassname"><span class="pre">customers_service.services.</span></span><span class="sig-name descname"><span class="pre">charge_wallet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">customer_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#customers_service.services.charge_wallet" title="Link to this definition">¶</a></dt>
+<dd><p>Adds funds to a customer’s wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>customer_id</strong> (<em>int</em>) – The ID of the customer.</p></li>
+<li><p><strong>amount</strong> (<em>float</em>) – The amount to add to the wallet.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A JSON response indicating success or failure with a status code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="customers_service.services.deduct_wallet">
+<span class="sig-prename descclassname"><span class="pre">customers_service.services.</span></span><span class="sig-name descname"><span class="pre">deduct_wallet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">customer_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#customers_service.services.deduct_wallet" title="Link to this definition">¶</a></dt>
+<dd><p>Deducts funds from a customer’s wallet if sufficient balance exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>customer_id</strong> (<em>int</em>) – The ID of the customer.</p></li>
+<li><p><strong>amount</strong> (<em>float</em>) – The amount to deduct from the wallet.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A JSON response indicating success or failure with a status code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="customers_service.services.delete_customer">
+<span class="sig-prename descclassname"><span class="pre">customers_service.services.</span></span><span class="sig-name descname"><span class="pre">delete_customer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">customer_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#customers_service.services.delete_customer" title="Link to this definition">¶</a></dt>
+<dd><p>Marks a customer as deleted in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>customer_id</strong> (<em>int</em>) – The ID of the customer to delete.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A JSON response indicating success or failure with a status code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="customers_service.services.get_all_customers">
+<span class="sig-prename descclassname"><span class="pre">customers_service.services.</span></span><span class="sig-name descname"><span class="pre">get_all_customers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#customers_service.services.get_all_customers" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves a list of all active customers from the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A JSON response containing a list of active customers or an error message.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="customers_service.services.get_customer_by_username">
+<span class="sig-prename descclassname"><span class="pre">customers_service.services.</span></span><span class="sig-name descname"><span class="pre">get_customer_by_username</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#customers_service.services.get_customer_by_username" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves customer details based on the provided username.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>username</strong> (<em>str</em>) – The username of the customer to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A JSON response containing customer details or an error message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="customers_service.services.get_db_connection">
+<span class="sig-prename descclassname"><span class="pre">customers_service.services.</span></span><span class="sig-name descname"><span class="pre">get_db_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#customers_service.services.get_db_connection" title="Link to this definition">¶</a></dt>
+<dd><p>Establishes a connection to the MySQL database using the provided configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Database connection object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>mysql.connector.connection.MySQLConnection</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – If the database connection fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="customers_service.services.register_customer">
+<span class="sig-prename descclassname"><span class="pre">customers_service.services.</span></span><span class="sig-name descname"><span class="pre">register_customer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#customers_service.services.register_customer" title="Link to this definition">¶</a></dt>
+<dd><p>Registers a new customer in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – A dictionary containing customer details, including:
+- full_name (str): Full name of the customer.
+- username (str): Username of the customer.
+- password (str): Password for the customer.
+- age (int): Age of the customer.
+- address (str): Address of the customer.
+- gender (str): Gender of the customer.
+- marital_status (str): Marital status of the customer.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A JSON response indicating success or failure with a status code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="customers_service.services.update_customer_info">
+<span class="sig-prename descclassname"><span class="pre">customers_service.services.</span></span><span class="sig-name descname"><span class="pre">update_customer_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">customer_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#customers_service.services.update_customer_info" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the information of an existing customer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>customer_id</strong> (<em>int</em>) – The ID of the customer to update.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – A dictionary containing updated customer details.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A JSON response indicating success or failure with a status code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-inventory_service.services">
+<dt class="sig sig-object py" id="inventory_service.services.add_inventory_item">
+<span class="sig-prename descclassname"><span class="pre">inventory_service.services.</span></span><span class="sig-name descname"><span class="pre">add_inventory_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory_service.services.add_inventory_item" title="Link to this definition">¶</a></dt>
+<dd><p>Add a new item to the inventory.</p>
+<p>This function inserts a new item into the <cite>inventory</cite> table. It expects the following fields
+in the request data: <cite>name</cite>, <cite>category</cite>, <cite>price</cite>, <cite>description</cite>, and <cite>stock_count</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – A dictionary containing the details of the item to be added.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>JSON response with success or error message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory_service.services.deduct_item_stock">
+<span class="sig-prename descclassname"><span class="pre">inventory_service.services.</span></span><span class="sig-name descname"><span class="pre">deduct_item_stock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory_service.services.deduct_item_stock" title="Link to this definition">¶</a></dt>
+<dd><p>Deduct a specified quantity of stock from an inventory item.</p>
+<p>This function updates the stock count of an inventory item identified by <cite>item_id</cite> by deducting the
+specified <cite>quantity</cite> from its existing stock.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item_id</strong> (<em>int</em>) – The unique identifier of the inventory item.</p></li>
+<li><p><strong>quantity</strong> (<em>int</em>) – The amount of stock to deduct from the item.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>JSON response indicating success or failure of the deduction operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory_service.services.get_all_items">
+<span class="sig-prename descclassname"><span class="pre">inventory_service.services.</span></span><span class="sig-name descname"><span class="pre">get_all_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inventory_service.services.get_all_items" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve a list of all inventory items.</p>
+<p>This function queries the <cite>inventory</cite> table and returns all items available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>JSON response with a list of all inventory items or an error message.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>jsonify()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory_service.services.get_db_connection">
+<span class="sig-prename descclassname"><span class="pre">inventory_service.services.</span></span><span class="sig-name descname"><span class="pre">get_db_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inventory_service.services.get_db_connection" title="Link to this definition">¶</a></dt>
+<dd><p>Establish a connection to the database using configuration from environment variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A MySQL database connection object if successful.
+jsonify(): JSON response with error message if the connection fails.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>connection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory_service.services.get_item_by_id">
+<span class="sig-prename descclassname"><span class="pre">inventory_service.services.</span></span><span class="sig-name descname"><span class="pre">get_item_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory_service.services.get_item_by_id" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve details of a specific inventory item by its ID.</p>
+<p>This function queries the <cite>inventory</cite> table for a specific item identified by <cite>item_id</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item_id</strong> (<em>int</em>) – The unique identifier of the inventory item.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>JSON response with item details if found, or an error message if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="inventory_service.services.update_item_details">
+<span class="sig-prename descclassname"><span class="pre">inventory_service.services.</span></span><span class="sig-name descname"><span class="pre">update_item_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inventory_service.services.update_item_details" title="Link to this definition">¶</a></dt>
+<dd><p>Update the details of an inventory item.</p>
+<p>This function updates the fields of an inventory item identified by <cite>item_id</cite> with the provided data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item_id</strong> (<em>int</em>) – The unique identifier of the inventory item.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – A dictionary of fields to update (e.g., name, category, price, etc.).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>JSON response indicating success or failure of the update operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify()</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-sales_service.services">
+<dt class="sig sig-object py" id="sales_service.services.display_available_goods">
+<span class="sig-prename descclassname"><span class="pre">sales_service.services.</span></span><span class="sig-name descname"><span class="pre">display_available_goods</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sales_service.services.display_available_goods" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves a list of goods that are currently available for sale,
+i.e., goods with stock_count greater than zero. This is done by querying
+the ‘inventory’ table in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A JSON response containing a list of available goods and a 200 status code.
+response (tuple): A JSON response with an error message and a 400 status code if the query fails.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>response (tuple)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sales_service.services.get_db_connection">
+<span class="sig-prename descclassname"><span class="pre">sales_service.services.</span></span><span class="sig-name descname"><span class="pre">get_db_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sales_service.services.get_db_connection" title="Link to this definition">¶</a></dt>
+<dd><p>Establishes a connection to the database using the configuration
+specified in the DB_CONFIG dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A MySQL connection object if successful.
+response (tuple): A JSON response with an error message and a 500 status code if the connection fails.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>connection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sales_service.services.get_good_details">
+<span class="sig-prename descclassname"><span class="pre">sales_service.services.</span></span><span class="sig-name descname"><span class="pre">get_good_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">good_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sales_service.services.get_good_details" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves the details of a specific good from the ‘inventory’ table based on the given good ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>good_id</strong> (<em>int</em>) – The ID of the good whose details need to be fetched.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A JSON response containing the details of the good and a 200 status code if found.
+response (tuple): A JSON response with an error message and a 404 status code if the good is not found.
+response (tuple): A JSON response with an error message and a 400 status code if the query fails.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>response (tuple)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sales_service.services.process_sale">
+<span class="sig-prename descclassname"><span class="pre">sales_service.services.</span></span><span class="sig-name descname"><span class="pre">process_sale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sales_service.services.process_sale" title="Link to this definition">¶</a></dt>
+<dd><p>Processes a sale by verifying customer wallet balance, checking good availability,
+updating the inventory, and recording the sale in the ‘sales’ table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – A dictionary containing the sale information, including customer_id,
+good_id, and quantity.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A JSON response with a success message and a 200 status code if the sale is processed successfully.
+response (tuple): A JSON response with an error message and a 400 or 404 status code if the sale fails.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>response (tuple)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-reviews_service.services">
+<dt class="sig sig-object py" id="reviews_service.services.delete_review">
+<span class="sig-prename descclassname"><span class="pre">reviews_service.services.</span></span><span class="sig-name descname"><span class="pre">delete_review</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">review_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#reviews_service.services.delete_review" title="Link to this definition">¶</a></dt>
+<dd><p>Deletes a review from the database.</p>
+<p>This function deletes a review from the ‘reviews’ table based on the provided review ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>review_id</strong> (<em>int</em>) – The ID of the review to be deleted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Success message or error message in case of failure.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="reviews_service.services.get_customer_reviews">
+<span class="sig-prename descclassname"><span class="pre">reviews_service.services.</span></span><span class="sig-name descname"><span class="pre">get_customer_reviews</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">customer_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#reviews_service.services.get_customer_reviews" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves all reviews written by a specific customer.</p>
+<p>This function fetches all reviews written by a customer from the ‘reviews’ table based
+on the provided customer ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>customer_id</strong> (<em>int</em>) – The ID of the customer for which to retrieve reviews.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of reviews written by the specified customer or an error message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="reviews_service.services.get_db_connection">
+<span class="sig-prename descclassname"><span class="pre">reviews_service.services.</span></span><span class="sig-name descname"><span class="pre">get_db_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#reviews_service.services.get_db_connection" title="Link to this definition">¶</a></dt>
+<dd><p>Establishes and returns a connection to the MySQL database.</p>
+<p>This function retrieves the database connection using the configuration stored in
+environment variables. It handles exceptions and returns an error message if the
+connection fails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The database connection.
+or
+jsonify (dict): Error message in case of failure.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>connection (mysql.connector.connection.MySQLConnection)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="reviews_service.services.get_product_reviews">
+<span class="sig-prename descclassname"><span class="pre">reviews_service.services.</span></span><span class="sig-name descname"><span class="pre">get_product_reviews</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#reviews_service.services.get_product_reviews" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves all reviews for a specific product.</p>
+<p>This function fetches all reviews related to a product from the ‘reviews’ table based
+on the provided product (inventory) ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>product_id</strong> (<em>int</em>) – The ID of the product for which to retrieve reviews.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of reviews for the specified product or an error message.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="reviews_service.services.get_review_details">
+<span class="sig-prename descclassname"><span class="pre">reviews_service.services.</span></span><span class="sig-name descname"><span class="pre">get_review_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">review_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#reviews_service.services.get_review_details" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieves the details of a specific review.</p>
+<p>This function fetches detailed information about a specific review based on its review ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>review_id</strong> (<em>int</em>) – The ID of the review to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The review details or an error message if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="reviews_service.services.moderate_review">
+<span class="sig-prename descclassname"><span class="pre">reviews_service.services.</span></span><span class="sig-name descname"><span class="pre">moderate_review</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">review_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#reviews_service.services.moderate_review" title="Link to this definition">¶</a></dt>
+<dd><p>Moderates a review based on a given action (approve or flag).</p>
+<p>This function updates the status of a review based on the moderation action: either
+approve or flag the review.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>review_id</strong> (<em>int</em>) – The ID of the review to be moderated.</p></li>
+<li><p><strong>action</strong> (<em>str</em>) – The action to take, either “approve” or “flag”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Success message or error message in case of failure.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="reviews_service.services.submit_review">
+<span class="sig-prename descclassname"><span class="pre">reviews_service.services.</span></span><span class="sig-name descname"><span class="pre">submit_review</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#reviews_service.services.submit_review" title="Link to this definition">¶</a></dt>
+<dd><p>Submits a new review to the database.</p>
+<p>This function takes in review data and inserts it into the ‘reviews’ table in the database.
+The review includes customer ID, product (inventory) ID, rating, and comment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – Review data containing customer_id, inventory_id, rating, and comment.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Success message or error message in case of failure.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="reviews_service.services.update_review">
+<span class="sig-prename descclassname"><span class="pre">reviews_service.services.</span></span><span class="sig-name descname"><span class="pre">update_review</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">review_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#reviews_service.services.update_review" title="Link to this definition">¶</a></dt>
+<dd><p>Updates an existing review in the database.</p>
+<p>This function updates the review details based on the provided review ID. The fields
+in the review (like rating, comment) are updated according to the provided data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>review_id</strong> (<em>int</em>) – The ID of the review to be updated.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – The new review data to update.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Success message or error message in case of failure.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>jsonify (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Ecommerce_Eid_Menassa_1</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Alexander Menassa, Alex Eid.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
