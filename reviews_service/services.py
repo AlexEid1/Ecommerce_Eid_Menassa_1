@@ -1,6 +1,8 @@
 from flask import jsonify
 import mysql.connector
 from mysql.connector import Error
+from mysql.connector.errors import IntegrityError
+import re
 import os
 from memory_profiler import profile
 
@@ -32,6 +34,35 @@ def get_db_connection():
         return jsonify({"error": f"Database connection failed: {str(e)}"}), 500
 
 @profile
+def validate_review_input(data):
+    """Validate and sanitize review inputs."""
+    required_fields = ["customer_id", "inventory_id", "rating", "comment"]
+
+    # Ensure all required fields are present
+    for field in required_fields:
+        if field not in data:
+            return False, f"Missing required field: {field}"
+
+    # Validate customer_id and inventory_id (must be integers)
+    if not isinstance(data["customer_id"], int) or data["customer_id"] <= 0:
+        return False, "Invalid customer_id. It must be a positive integer."
+    if not isinstance(data["inventory_id"], int) or data["inventory_id"] <= 0:
+        return False, "Invalid inventory_id. It must be a positive integer."
+
+    # Validate rating (must be an integer between 1 and 5)
+    if not isinstance(data["rating"], int) or not (1 <= data["rating"] <= 5):
+        return False, "Invalid rating. It must be an integer between 1 and 5."
+
+    # Validate comment (must be a non-empty string, sanitized for harmful content)
+    if not isinstance(data["comment"], str) or len(data["comment"].strip()) == 0:
+        return False, "Invalid comment. It must be a non-empty string."
+    if re.search(r"[<>]", data["comment"]):  # Basic XSS prevention
+        return False, "Comment contains invalid characters."
+
+    # All validations passed
+    return True, "Valid input."
+
+@profile
 def submit_review(data):
     """
     Submits a new review to the database.
@@ -45,21 +76,31 @@ def submit_review(data):
     Returns:
         jsonify (dict): Success message or error message in case of failure.
     """
+    is_valid, message = validate_review_input(data)
+    if not is_valid:
+        return jsonify({"error": message}), 400
+
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
-        query = """INSERT INTO reviews (customer_id, inventory_id, rating, comment) 
-                   VALUES (%s, %s, %s, %s)"""
+        query = """INSERT INTO reviews (customer_id, inventory_id, rating, comment, status)
+                   VALUES (%s, %s, %s, %s, 'approved')"""
         cursor.execute(query, (
-            data['customer_id'], data['inventory_id'], data['rating'], data['comment']
+            data["customer_id"],
+            data["inventory_id"],
+            data["rating"],
+            data["comment"]
         ))
         connection.commit()
         return jsonify({"message": "Review submitted successfully!"}), 201
-    except Error as e:
-        return jsonify({"error": str(e)}), 400
+    except IntegrityError as e:
+        return jsonify({"error": "Database error: " + str(e)}), 400
+    except Exception as e:
+        return jsonify({"error": "An unexpected error occurred."}), 500
     finally:
         cursor.close()
         connection.close()
+
 
 @profile
 def update_review(review_id, data):
@@ -76,6 +117,11 @@ def update_review(review_id, data):
     Returns:
         jsonify (dict): Success message or error message in case of failure.
     """
+    
+    is_valid, message = validate_review_input(data)
+    if not is_valid:
+        return jsonify({"error": message}), 400
+    
     connection = get_db_connection()
     cursor = connection.cursor()
     try:
