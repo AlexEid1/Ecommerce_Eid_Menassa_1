@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from auth_permissions import generate_token
+from services import get_db_connection
 from services import (
     submit_review, update_review, delete_review,
     get_product_reviews, get_customer_reviews, 
@@ -6,6 +8,26 @@ from services import (
 )
 
 app = Flask(__name__)
+
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.json
+    username = data.get("username")
+    password = data.get("password")
+
+    # Fetch user from database
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM customers WHERE username = %s", (username,))
+    user = cursor.fetchone()
+    cursor.close()
+    connection.close()
+
+    if not user or user["password"] != password:
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    token = generate_token(user["id"], user["role"])
+    return jsonify({"token": token, "mfa_enabled": user["mfa_enabled"]}), 200
 
 @app.route('/reviews', methods=['POST'])
 def create_review():

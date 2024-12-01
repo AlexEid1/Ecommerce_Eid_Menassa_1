@@ -5,6 +5,7 @@ from mysql.connector.errors import IntegrityError
 import re
 import os
 from memory_profiler import profile
+from auth_permissions import mfa_required, role_required
 
 # Database configuration from environment variables
 DB_CONFIG = {
@@ -138,6 +139,8 @@ def update_review(review_id, data):
         connection.close()
 
 @profile
+@mfa_required
+@role_required("admin")
 def delete_review(review_id):
     """
     Deletes a review from the database.
@@ -215,6 +218,8 @@ def get_customer_reviews(customer_id):
         connection.close()
 
 @profile
+@mfa_required
+@role_required("admin")
 def moderate_review(review_id, action):
     """
     Moderates a review based on a given action (approve or flag).

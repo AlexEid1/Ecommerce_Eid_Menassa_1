@@ -4,3 +4,5 @@ pytest
 pytest-mock
 memory_profiler
 coverage
+jwt
+pyotp

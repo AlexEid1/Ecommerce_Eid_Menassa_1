@@ -3,6 +3,7 @@ import mysql.connector
 from mysql.connector import Error
 import os
 from memory_profiler import profile
+from auth_permissions import mfa_required, role_required
 
 # Database configuration from environment variables
 DB_CONFIG = {
@@ -78,6 +79,7 @@ def get_good_details(good_id):
         connection.close()
 
 @profile
+@mfa_required
 def process_sale(data):
     """
     Processes a sale by verifying customer wallet balance, checking good availability, 

@@ -16,6 +16,9 @@ CREATE TABLE IF NOT EXISTS customers (
     marital_status ENUM('single', 'married'),
     wallet_balance DECIMAL(10, 2) DEFAULT 0,
     status ENUM('active', 'deleted') DEFAULT 'active' -- Soft delete status
+    mfa_enabled BOOLEAN DEFAULT FALSE,
+    mfa_secret VARCHAR(255),
+    role ENUM('customer', 'admin') DEFAULT 'customer';
 );
 
 -- Inventory Table
